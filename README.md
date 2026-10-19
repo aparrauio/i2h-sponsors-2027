@@ -6,7 +6,7 @@ Presentación web para auspiciantes y partners de Interact2Hack 2027, el hackath
 
 ## Uso
 - Flechas, barra espaciadora o deslizar para avanzar.
-- `F` pantalla completa · `N` guion del presentador · `E` edición de texto.
+- `F` pantalla completa · `N` guion del presentador.
 - En la última slide, el botón «Comparte esta propuesta» permite enviar el enlace, copiarlo o guardar la presentación como PDF.
 - `#N` al final de la URL abre directamente la slide N (por ejemplo `#19`).
 

@@ -77,7 +77,7 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 @media print {
     html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     html, body { width: 1920px; height: auto; overflow: visible; background: #050307; }
-    .progress, .edit-hotzone, .edit-toggle, .notes-panel, .toast { display: none !important; }
+    .progress, .notes-panel, .toast { display: none !important; }
     .reveal.wipe { clip-path: none !important; }
     .ph { filter: none !important; } /* CSS filters force full-page rasterization: 120 MB PDF instead of ~7 MB */
     .s23 .vid iframe { display: none !important; }
@@ -480,18 +480,12 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 .notes-panel b { color: #A46CFB; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; display: block; margin-bottom: 8px; }
 .progress { position: fixed; left: 0; top: 0; height: 3px; background: #A46CFB; z-index: 1500; transition: width .4s; }
 .slide aside.notes { display: none; }
-.edit-hotzone { position: fixed; top: 0; left: 0; width: 80px; height: 80px; z-index: 10000; cursor: pointer; }
-.edit-toggle { position: fixed; top: 16px; left: 16px; z-index: 10001; opacity: 0; pointer-events: none; transition: opacity .3s; background: #A46CFB; color: #0B0612; border: 0; font: 600 14px 'Sora', sans-serif; padding: 10px 14px; cursor: pointer; }
-.edit-toggle.show, .edit-toggle.active { opacity: 1; pointer-events: auto; }
 .toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); z-index: 3100; max-width: min(640px, 90vw); background: #5CF000; color: #0B0612; font: 600 14px/1.4 'Sora', sans-serif; padding: 12px 18px; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; word-break: break-all; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
-body.editing [contenteditable="true"] { outline: 1px dashed rgba(92,240,0,0.6); }
 </style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
-<div class="edit-hotzone"></div>
-<button class="edit-toggle" id="editToggle" title="Modo edición (E)">Editar texto</button>
 <div class="notes-panel" id="notesPanel"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1051,7 +1045,6 @@ class SlidePresentation {
     }
     setupKeyboard() {
         document.addEventListener('keydown', (e) => {
-            if (e.target.isContentEditable) return;
             if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); this.show(this.current + 1); }
             else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); this.show(this.current - 1); }
             else if (e.key === 'Home') this.show(0);
@@ -1092,59 +1085,7 @@ class SlidePresentation {
     }
 }
 
-/* ===========================================
-   INLINE EDITING: E toggles edit mode; Ctrl+S downloads the edited file.
-   Edits are also kept in this browser (localStorage) until saved.
-   =========================================== */
-class InlineEditor {
-    constructor() {
-        this.isActive = false;
-        this.key = 'i2h2027-deck-edits';
-        this.targets = () => document.querySelectorAll('.slide h2, .slide h3, .slide p, .slide li, .slide td, .slide .kicker, .slide .c, .slide .n, .slide .t, .slide .k, .slide .big, .slide .note, .slide .facts div, .slide .cos div, .slide .story, .slide .who, .slide .src, .slide .disc, .slide .lines div, .slide .edition, .slide .sub, .slide .year, .slide .contacts div, .slide .steps div, .slide .cta, .slide .media, .slide .reasons div, .slide .by, .slide .quote, .slide .logo-slot span');
-        this.restore();
-    }
-    toggleEditMode() {
-        this.isActive = !this.isActive;
-        document.body.classList.toggle('editing', this.isActive);
-        document.getElementById('editToggle').classList.toggle('active', this.isActive);
-        this.targets().forEach(el => el.setAttribute('contenteditable', this.isActive ? 'true' : 'false'));
-        if (!this.isActive) this.persist();
-    }
-    persist() {
-        try { localStorage.setItem(this.key, JSON.stringify([...this.targets()].map(el => el.innerHTML))); } catch (e) {}
-    }
-    restore() {
-        try {
-            const saved = JSON.parse(localStorage.getItem(this.key) || 'null');
-            if (saved) this.targets().forEach((el, i) => { if (saved[i] !== undefined) el.innerHTML = saved[i]; });
-        } catch (e) {}
-    }
-    download() {
-        this.targets().forEach(el => el.removeAttribute('contenteditable'));
-        document.body.classList.remove('editing');
-        const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
-        a.download = 'index.html'; try { a.click(); } catch (e) {}
-        if (this.isActive) this.toggleEditMode();
-    }
-}
-
 const deck = new SlidePresentation();
-const editor = new InlineEditor();
-const editToggle = document.getElementById('editToggle');
-const hotzone = document.querySelector('.edit-hotzone');
-let hideTimeout = null;
-editToggle.addEventListener('click', () => editor.toggleEditMode());
-hotzone.addEventListener('click', () => editor.toggleEditMode());
-hotzone.addEventListener('mouseenter', () => { clearTimeout(hideTimeout); editToggle.classList.add('show'); });
-hotzone.addEventListener('mouseleave', () => { hideTimeout = setTimeout(() => { if (!editor.isActive) editToggle.classList.remove('show'); }, 400); });
-editToggle.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
-editToggle.addEventListener('mouseleave', () => { hideTimeout = setTimeout(() => { if (!editor.isActive) editToggle.classList.remove('show'); }, 400); });
-document.addEventListener('keydown', (e) => {
-    if ((e.key === 'e' || e.key === 'E') && !e.target.isContentEditable) editor.toggleEditMode();
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); editor.persist(); editor.download(); }
-});
 
 /* ===========================================
    SHARE (closing slide): native share sheet, copy link, PDF via print
