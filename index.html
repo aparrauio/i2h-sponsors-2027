@@ -323,8 +323,19 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 /* 14 · Cronograma */
 .nw { white-space: nowrap; }
 .s14 .title { font-size: 76px; width: 1500px; margin-top: 20px; }
-.s14 svg.curve { position: absolute; left: var(--pad); top: 410px; width: 1680px; height: 160px; }
-.s14 .phases { position: absolute; left: var(--pad); right: var(--pad); top: 590px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 26px; }
+/* chevron track: one arrow per phase, intensity grows toward the hackathon */
+.s14 .track { position: absolute; left: var(--pad); right: var(--pad); top: 420px; height: 96px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.s14 .track div { position: relative; display: flex; align-items: center; gap: 18px; padding-left: 64px; clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%, 40px 50%); color: var(--white); }
+.s14 .track div:first-child { padding-left: 28px; clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%); }
+.s14 .track div:nth-child(1) { background: rgba(164,108,251,0.22); }
+.s14 .track div:nth-child(2) { background: rgba(164,108,251,0.42); }
+.s14 .track div:nth-child(3) { background: rgba(164,108,251,0.7); }
+.s14 .track div.hl { background: var(--lime); color: var(--purple-ink); }
+.s14 .track div:nth-child(5) { background: var(--purple-deep); }
+.s14 .track b { font: 900 52px/1 var(--display); }
+.s14 .track span { font: 600 18px/1 var(--body); letter-spacing: 0.16em; text-transform: uppercase; }
+.s14 .phases { position: absolute; left: var(--pad); right: var(--pad); top: 560px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.s14 .phases > div { padding-right: 40px; }
 .s14 .phases h3 { font: 900 38px/1 var(--display); text-transform: uppercase; }
 .s14 .phases .date { font: 600 20px/1.3 var(--body); color: var(--purple); margin-top: 10px; letter-spacing: 0.04em; }
 .s14 .phases .get { font: 400 20px/1.4 var(--body); color: var(--muted); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--faint); }
@@ -714,10 +725,13 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(92,240,0,0.6); 
     <div class="kicker reveal" style="--d:0">Cronograma 2027</div>
     <h2 class="title reveal" style="--d:1">Tu marca vive meses de campaña, <span class="nw">no solo un fin de semana</span></h2>
   </div>
-  <svg class="curve reveal" style="--d:2" viewBox="0 0 1680 160" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M20 120 C 180 20, 300 20, 356 80 S 560 150, 692 80 S 900 10, 1028 80 S 1240 150, 1364 70 S 1560 20, 1660 60" fill="none" stroke="#A46CFB" stroke-width="4"/>
-    <circle cx="20" cy="120" r="16" fill="#A46CFB"/><circle cx="356" cy="80" r="16" fill="#A46CFB"/><circle cx="692" cy="80" r="16" fill="#A46CFB"/><circle cx="1028" cy="80" r="22" fill="#5CF000"/><circle cx="1364" cy="70" r="16" fill="#A46CFB"/>
-  </svg>
+  <div class="track" aria-hidden="true">
+    <div class="reveal" style="--d:2"><b>01</b></div>
+    <div class="reveal" style="--d:3"><b>02</b></div>
+    <div class="reveal" style="--d:4"><b>03</b></div>
+    <div class="hl reveal" style="--d:5"><b>04</b><span>El evento</span></div>
+    <div class="reveal" style="--d:6"><b>05</b></div>
+  </div>
   <div class="phases">
     <div class="reveal" style="--d:3"><h3>Firma y onboarding</h3><div class="date">Desde la firma</div><div class="get">Logo en landing y piezas de campaña</div></div>
     <div class="reveal" style="--d:4"><h3>Early bird</h3><div class="date">5–20 de enero</div><div class="get">Campaña pagada y orgánica en Instagram, Facebook y LinkedIn</div></div>
