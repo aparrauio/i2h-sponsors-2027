@@ -321,6 +321,7 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 .s13 .node .brand b { color: var(--purple); font-weight: 600; }
 
 /* 14 · Cronograma */
+.nw { white-space: nowrap; }
 .s14 .title { font-size: 76px; width: 1500px; margin-top: 20px; }
 .s14 svg.curve { position: absolute; left: var(--pad); top: 410px; width: 1680px; height: 160px; }
 .s14 .phases { position: absolute; left: var(--pad); right: var(--pad); top: 590px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 26px; }
@@ -355,15 +356,17 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 .s17 .media b { color: var(--purple); letter-spacing: 0.16em; font-size: 17px; text-transform: uppercase; margin-right: 6px; }
 
 /* 18 · Por qué importa */
-.s18 .ph { top: 0; right: 0; width: 760px; height: 1080px; }
-.s18 .col { position: absolute; left: var(--pad); top: 160px; width: 1080px; }
-.s18 .title { font-size: 68px; margin-top: 20px; }
-.s18 .quote { margin-top: 56px; font: 900 76px/1.02 var(--display); text-transform: uppercase; }
+.s18 .ph { top: 0; right: 0; width: 1020px; height: 1080px; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%); mask-image: linear-gradient(90deg, transparent 0%, #000 22%); }
+.s18 .ph-shade { position: absolute; top: 0; right: 0; width: 1020px; height: 1080px; background: linear-gradient(180deg, rgba(5,3,7,0) 38%, rgba(5,3,7,0.88) 78%, rgba(5,3,7,0.95) 100%); pointer-events: none; }
+.s18 .col { position: absolute; left: var(--pad); top: 160px; width: 800px; }
+.s18 .title { font-size: 76px; margin-top: 20px; }
+.s18 .reasons { display: grid; grid-template-columns: 1fr 1fr; gap: 44px 40px; margin-top: 64px; }
+.s18 .reasons div { border-top: 4px solid var(--purple); padding-top: 22px; font: 600 32px/1.3 var(--body); }
+.s18 .reasons small { display: block; font: 900 56px/1 var(--display); color: var(--purple); margin-bottom: 12px; }
+.s18 .said { position: absolute; left: 1020px; right: var(--pad); bottom: 150px; margin: 0; }
+.s18 .quote { font: 900 64px/1.02 var(--display); text-transform: uppercase; margin: 0; }
 .s18 .quote .q { color: var(--purple); }
-.s18 .by { margin-top: 22px; font: 600 22px/1.3 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.s18 .reasons { position: absolute; left: var(--pad); width: 1140px; bottom: 140px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.s18 .reasons div { border-top: 4px solid var(--purple); padding-top: 18px; font: 600 23px/1.35 var(--body); }
-.s18 .reasons small { display: block; font: 900 30px/1 var(--display); color: var(--purple); margin-bottom: 10px; }
+.s18 .by { margin-top: 20px; padding-left: 18px; border-left: 4px solid var(--lime); font: 600 22px/1.3 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); }
 
 /* 19 · Gold */
 .s19 .col { position: absolute; left: var(--pad); top: 160px; width: 600px; }
@@ -709,7 +712,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(92,240,0,0.6); 
 <section class="slide s14" data-act="2" data-chrome="full">
   <div class="frame">
     <div class="kicker reveal" style="--d:0">Cronograma 2027</div>
-    <h2 class="title reveal" style="--d:1">Tu marca vive meses de campaña, no solo un fin de semana</h2>
+    <h2 class="title reveal" style="--d:1">Tu marca vive meses de campaña, <span class="nw">no solo un fin de semana</span></h2>
   </div>
   <svg class="curve reveal" style="--d:2" viewBox="0 0 1680 160" preserveAspectRatio="none" aria-hidden="true">
     <path d="M20 120 C 180 20, 300 20, 356 80 S 560 150, 692 80 S 900 10, 1028 80 S 1240 150, 1364 70 S 1560 20, 1660 60" fill="none" stroke="#A46CFB" stroke-width="4"/>
@@ -764,7 +767,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(92,240,0,0.6); 
   </div>
   <div class="frame">
     <div class="kicker reveal" style="--d:0">La conversación después · LinkedIn y medios</div>
-    <h2 class="title reveal" style="--d:1">Los participantes hablan de tu marca sin que se lo pidas</h2>
+    <h2 class="title reveal" style="--d:1">Los participantes hablan de tu marca <span class="nw">sin que se lo pidas</span></h2>
   </div>
   <div class="row">
     <div class="circle reveal" style="--d:3"><div class="n">91%</div><div class="c">sentimiento positivo</div></div>
@@ -778,19 +781,22 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(92,240,0,0.6); 
 
 <!-- 18 · Por qué importa -->
 <section class="slide s18" data-act="3" data-chrome="full">
-  <div class="ph fade-left" style="background-image:url(assets/photos/d2-52.jpg)"></div>
+  <div class="ph" style="background-image:url(assets/photos/d2-2.jpg);background-position:40% center"></div>
+  <div class="ph-shade"></div>
   <div class="col">
     <div class="kicker reveal" style="--d:0">Por qué importa para tu marca</div>
     <h2 class="title reveal" style="--d:1">Cuatro razones por las que esto vale más que un anuncio</h2>
-    <p class="quote reveal" style="--d:3"><span class="q">“</span>Aquí es donde nacen las ideas que pueden <span class="lime">transformar industrias</span>.<span class="q">”</span></p>
-    <div class="by reveal" style="--d:4">Felipe Duclos · CEO de DeUna</div>
+    <div class="reasons">
+      <div class="reveal" style="--d:3"><small>01</small>Conexión emocional</div>
+      <div class="reveal" style="--d:4"><small>02</small>Contenido orgánico con profundidad</div>
+      <div class="reveal" style="--d:5"><small>03</small>Posicionamiento como impulsor de talento</div>
+      <div class="reveal" style="--d:6"><small>04</small>Prueba social para futuros aliados</div>
+    </div>
   </div>
-  <div class="reasons">
-    <div class="reveal" style="--d:5"><small>01</small>Conexión emocional</div>
-    <div class="reveal" style="--d:6"><small>02</small>Contenido orgánico con profundidad</div>
-    <div class="reveal" style="--d:7"><small>03</small>Posicionamiento como impulsor de talento</div>
-    <div class="reveal" style="--d:8"><small>04</small>Prueba social para futuros aliados</div>
-  </div>
+  <figure class="said reveal" style="--d:7">
+    <blockquote class="quote"><span class="q">“</span>Aquí es donde nacen las ideas que pueden <span class="lime">transformar industrias</span>.<span class="q">”</span></blockquote>
+    <figcaption class="by">Felipe Duclos · CEO de DeUna</figcaption>
+  </figure>
   <aside class="notes">“No lo decimos solo nosotros. El CEO de DeUna lo escribió después del evento, y TECNOPOP contó que estos espacios también les permiten a las marcas aprender, escuchar y evolucionar junto al talento. Un anuncio se olvida; una experiencia que el participante cuenta en su perfil profesional, no.” [Confirmar con DeUna el uso de la cita.]</aside>
 </section>
 
@@ -960,7 +966,7 @@ body.editing [contenteditable="true"] { outline: 1px dashed rgba(92,240,0,0.6); 
           <button data-act="copy" role="menuitem">Copiar enlace<small>Para pegarlo donde quieras</small></button>
           <button data-act="pdf" role="menuitem">Guardar como PDF<small>Una página por slide</small></button>
         </div>
-        <button class="share-btn" id="shareBtn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Comparte esta propuesta</button>
+        <button class="share-btn" id="shareBtn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Compartir</button>
       </div>
     </div>
   </div>
