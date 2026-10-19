@@ -358,10 +358,10 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 
 /* 17 · Conversación */
 .s17 .title { font-size: 80px; width: 1500px; margin-top: 20px; }
-.s17 .cloud { position: absolute; inset: 0; pointer-events: none; font: 900 var(--display); color: rgba(164,108,251,0.10); text-transform: uppercase; }
+.s17 .cloud { position: absolute; inset: 0; pointer-events: none; font: 900 var(--display); color: rgba(164,108,251,0.16); text-transform: uppercase; }
 .s17 .cloud span { position: absolute; font-family: var(--display); font-weight: 900; }
-.s17 .row { position: absolute; left: var(--pad); right: var(--pad); top: 370px; display: flex; justify-content: space-between; }
-.s17 .circle { width: 360px; height: 360px; }
+.s17 .row { position: absolute; left: var(--pad); right: var(--pad); top: 430px; display: flex; justify-content: space-between; }
+.s17 .circle { width: 340px; height: 340px; }
 .s17 .circle .n { font-size: 110px; }
 .s17 .media { position: absolute; left: var(--pad); right: var(--pad); bottom: 130px; display: flex; gap: 28px; align-items: center; font: 600 21px/1 var(--body); color: rgba(255,255,255,0.7); flex-wrap: nowrap; }
 .s17 .media b { color: var(--purple); letter-spacing: 0.16em; font-size: 17px; text-transform: uppercase; margin-right: 6px; }
@@ -450,21 +450,22 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 .s23 .vid .cap i { margin-left: auto; font: 600 22px/1 var(--body); font-style: normal; }
 
 /* 24 · Cierre */
-.s24 .col { position: absolute; left: var(--pad); top: 170px; width: 1300px; }
-.s24 .title { font-size: 118px; }
-.s24 .steps { display: flex; gap: 36px; margin-top: 60px; font: 600 22px/1.35 var(--body); color: rgba(255,255,255,0.86); }
-.s24 .steps div { max-width: 360px; }
-.s24 .steps b { display: block; font: 900 40px/1 var(--display); color: var(--lime); margin-bottom: 6px; }
-.s24 .contacts { position: absolute; left: var(--pad); right: var(--pad); bottom: 140px; display: flex; gap: 80px; font: 400 22px/1.5 var(--body); color: rgba(255,255,255,0.86); }
-.s24 .contacts b { display: block; font-weight: 600; color: var(--white); }
-.s24 .contacts .end { margin-left: auto; align-self: flex-end; display: flex; flex-direction: column; align-items: flex-end; gap: 26px; }
-.s24 .contacts .web { font: 900 44px/1 var(--display); color: var(--white); text-transform: uppercase; text-decoration: none; border-bottom: 4px solid var(--lime); padding-bottom: 6px; }
-.s24 .contacts .web:hover { color: var(--lime); }
+.s24 .col { position: absolute; left: var(--pad); right: var(--pad); top: 150px; }
+.s24 .title { font-size: 112px; }
+.s24 .contacts { display: flex; gap: 32px; margin-top: 56px; }
+.s24 .person { width: 520px; padding: 30px 36px 32px; border-left: 6px solid var(--lime); background: rgba(11,6,18,0.78); }
+.s24 .person .name { font: 900 60px/1 var(--display); text-transform: uppercase; color: var(--white); }
+.s24 .person .role { font: 600 20px/1 var(--body); letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple); margin: 12px 0 20px; }
+.s24 .person a { display: block; font: 600 30px/1.45 var(--body); color: var(--white); text-decoration: none; }
+.s24 .person a:hover { color: var(--lime); }
+.s24 .links { display: flex; align-items: center; gap: 36px; margin-top: 40px; }
+.s24 .links .web { font: 900 44px/1 var(--display); color: var(--white); text-transform: uppercase; text-decoration: none; border-bottom: 4px solid var(--lime); padding-bottom: 6px; }
+.s24 .links .web:hover { color: var(--lime); }
 .s24 .share { position: relative; }
 .s24 .share-btn { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--white); border: 2px solid var(--purple); font: 600 22px/1 var(--body); padding: 14px 22px; cursor: pointer; transition: background .2s, color .2s; }
 .s24 .share-btn:hover, .s24 .share.open .share-btn { background: var(--purple); color: var(--purple-ink); }
 .s24 .share-btn svg { width: 24px; height: 24px; }
-.s24 .share-menu { position: absolute; right: 0; bottom: calc(100% + 12px); display: none; flex-direction: column; min-width: 420px; background: var(--purple-ink); border: 2px solid var(--purple); box-shadow: 0 18px 60px rgba(0,0,0,.6); z-index: 5; }
+.s24 .share-menu { position: absolute; left: 0; bottom: calc(100% + 12px); display: none; flex-direction: column; min-width: 420px; background: var(--purple-ink); border: 2px solid var(--purple); box-shadow: 0 18px 60px rgba(0,0,0,.6); z-index: 5; }
 .s24 .share.open .share-menu { display: flex; }
 .s24 .share-menu button { text-align: left; background: none; border: 0; color: var(--white); font: 600 22px/1.2 var(--body); padding: 18px 24px; cursor: pointer; }
 .s24 .share-menu button + button { border-top: 1px solid rgba(255,255,255,0.12); }
@@ -770,8 +771,8 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 <!-- 17 · La conversación después -->
 <section class="slide s17" data-act="3" data-chrome="full">
   <div class="cloud" aria-hidden="true">
-    <span style="left:110px;top:770px;font-size:96px">Aprendizaje</span><span style="left:760px;top:790px;font-size:80px">Innovación</span>
-    <span style="left:1350px;top:760px;font-size:110px">DeUna</span>
+    <span style="left:120px;top:812px;font-size:62px">Aprendizaje</span><span style="left:560px;top:820px;font-size:54px">Innovación</span>
+    <span style="left:960px;top:808px;font-size:66px">Trabajo en equipo</span><span style="left:1530px;top:816px;font-size:60px">DeUna</span>
   </div>
   <div class="frame">
     <div class="kicker reveal" style="--d:0">La conversación después · LinkedIn y medios</div>
@@ -812,7 +813,7 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
 <section class="slide s19" data-act="3" data-chrome="full">
   <div class="col">
     <div class="kicker reveal" style="--d:0">Paquetes de auspicio</div>
-    <h2 class="title reveal" style="--d:1">Un solo presentador: el reto, el escenario y la conversación</h2>
+    <h2 class="title reveal" style="--d:1">Tu marca al frente del reto, el escenario y la conversación</h2>
   </div>
   <div class="gold reveal wipe" style="--d:2">
     <span class="tag">Exclusividad de línea</span>
@@ -956,26 +957,31 @@ img, video, canvas, svg { max-width: 100%; max-height: 100%; }
   <div class="ph full drift" style="background-image:url(assets/photos/b-2.jpg)"></div>
   <div class="shade" style="background:linear-gradient(90deg, rgba(5,3,7,0.94) 0%, rgba(5,3,7,0.78) 60%, rgba(5,3,7,0.5) 100%)"></div>
   <div class="col">
-    <h2 class="title reveal" style="--d:1">El talento ya está aquí. Falta que <span class="lime">tu marca</span> esté con él.</h2>
-    <div class="steps reveal" style="--d:5">
-      <div><b>01</b>Reunión y elección de nivel</div>
-      <div><b>02</b>Firma y entrega de logos, mentores y brief del reto</div>
-      <div><b>03</b>Tu marca entra en la campaña desde el lanzamiento de inscripciones</div>
-    </div>
-  </div>
-  <div class="contacts reveal" style="--d:7">
-    <div><b>Mark Bueno</b>Coordinador<br>msbueno@usfq.edu.ec · 099 803 7610</div>
-    <div><b>Andrés Parra</b>Profesor<br>aparra@usfq.edu.ec · 099 801 5940</div>
-    <div class="end">
-      <a class="web" href="https://interact2hack.com" target="_blank" rel="noopener">interact2hack.com</a>
-      <div class="share" id="shareUi">
-        <div class="share-menu" id="shareMenu" role="menu">
-          <button data-act="share" role="menuitem">Enviar la presentación<small>WhatsApp, correo o la app que prefieras</small></button>
-          <button data-act="copy" role="menuitem">Copiar enlace<small>Para pegarlo donde quieras</small></button>
-          <button data-act="pdf" role="menuitem">Guardar como PDF<small>Una página por slide</small></button>
-        </div>
-        <button class="share-btn" id="shareBtn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Compartir</button>
+    <h2 class="title reveal" style="--d:1">El talento ya está aquí.<br><span class="nw">Falta que <span class="lime">tu marca</span> esté con él.</span></h2>
+    <div class="contacts reveal" style="--d:4">
+      <div class="person">
+        <div class="name">Mark Bueno</div>
+        <div class="role">Coordinador</div>
+        <a href="mailto:msbueno@usfq.edu.ec">msbueno@usfq.edu.ec</a>
+        <a href="tel:+593998037610">099 803 7610</a>
       </div>
+      <div class="person">
+        <div class="name">Andrés Parra</div>
+        <div class="role">Profesor</div>
+        <a href="mailto:aparra@usfq.edu.ec">aparra@usfq.edu.ec</a>
+        <a href="tel:+593998015940">099 801 5940</a>
+      </div>
+    </div>
+    <div class="links reveal" style="--d:6">
+      <a class="web" href="https://interact2hack.com" target="_blank" rel="noopener">interact2hack.com</a>
+    <div class="share" id="shareUi">
+      <div class="share-menu" id="shareMenu" role="menu">
+        <button data-act="share" role="menuitem">Enviar la presentación<small>WhatsApp, correo o la app que prefieras</small></button>
+        <button data-act="copy" role="menuitem">Copiar enlace<small>Para pegarlo donde quieras</small></button>
+        <button data-act="pdf" role="menuitem">Guardar como PDF<small>Una página por slide</small></button>
+      </div>
+      <button class="share-btn" id="shareBtn" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>Compartir</button>
+    </div>
     </div>
   </div>
   <aside class="notes">“La próxima edición es el 19 de febrero y la campaña arranca con las inscripciones del 5 de enero. El primer paso es una reunión de 20 minutos para elegir el nivel; ¿la agendamos esta semana?”</aside>
